@@ -1,0 +1,151 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>CSS Playground</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <ion-progress-bar type="indeterminate" *ngIf="ShowLoading"></ion-progress-bar>
+
+  <!-- <div class="container-logo" *ngIf="ShowLogo">
+    <div class="centered-element-logo">
+        <ion-img [src]="rsvpInfo?.clientId?.customFields?.logoUrl" alt="Brand Logo" class="brand"></ion-img>
+    </div>
+  </div> -->
+ 
+  <!-- Show Error -->
+
+  <div class="container-grid error">
+
+    <ion-grid>
+
+      <!-- <ion-col size="8" size-sm="8">
+        <p id="eventName">       
+              {{rsvpInfo?.eventId?.eventName}}
+        </p>
+      </ion-col> -->
+
+      <ion-col size="4" size-sm="4">
+        <ion-img [src]="rsvpInfo?.clientId?.customFields?.logoUrl" alt="Brand Logo" class="brand"></ion-img>
+      </ion-col>
+
+    </ion-grid>
+
+
+
+    <ion-grid class="custom-grid-1" [fixed]="true" *ngIf="ShowError">
+ 
+      <ion-row>
+        <ion-col size="12" size-sm="12" class="custom-spinner">
+          <ion-img src="../assets/error.jpg" alt="Error" class="check-mark"></ion-img>
+          <p id="fname">Oops, that's not a valid link. Please try again. </p>
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+
+  </div>
+
+
+  <!-- Default QR Code -->
+
+  <div class="container-grid" *ngIf="ShowDefaultRSVP">
+
+    <ion-grid class="custom-grid-1" [fixed]="true">
+
+      <ion-row>
+        <ion-col size="12" size-sm="12" id="eventInfo">
+          <h1><b>
+            <ion-text color="">
+              {{rsvpInfo?.eventId?.eventName}}
+            </ion-text>
+          </b>
+          </h1>
+          <!-- <p id="EventDetails">{{rsvpInfo?.eventId?.time}} | {{rsvpInfo?.eventId?.date}}<br>{{rsvpInfo?.eventId?.venue}}</p> -->
+          <!-- <a [href]="rsvpInfo?.eventId?.googleMapURL" target="_blank" *ngIf="rsvpInfo.eventId?.googleMapURL"> -->
+            <!-- <ion-badge color="primary" id="badge1">View Details</ion-badge> -->
+          <!-- </a> -->
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12" size-sm="12">
+          <qr-code [value]="QRCodeValue" [size]="144" foreground="#000000" ></qr-code>
+          <p id="subText">Show QR Code at Venue </p>
+        </ion-col>
+      </ion-row>
+
+      <!-- Already Scanned -->
+      <!-- <ion-row *ngIf="ShowCheckMark">
+        <ion-col size="12" size-sm="12">
+          <ion-img src="../assets/check.jpg" alt="Green Tick" class="AlreadyScanned"></ion-img>
+          <p id="subText">Last Scanned at 4:42 PM on 4 Dec 2022</p>
+        </ion-col>
+      </ion-row> -->
+
+    </ion-grid>
+
+    <ion-row>
+      <ion-col size="12" size-sm="12" id="eventInfo">
+        <p id="EventDetails">{{rsvpInfo?.eventId?.time}} | {{rsvpInfo?.eventId?.date}}<br>{{rsvpInfo?.eventId?.venue}}</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- RSVP Info -->
+    
+    <ion-card class="">
+
+      <ion-card-header color="primary">
+        <ion-card-title>Registration Details</ion-card-title>
+      </ion-card-header>
+
+      <ion-grid class="custom-grid-1 otherInfo ion-text-left">
+        <ion-row>
+          <ion-col size-xl="6" offset-xl="3">
+            Name:
+          </ion-col>
+          <ion-col size-xl="6" offset-xl="3">
+            <b>{{rsvpInfo?.userId?.name}}</b>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size-xl="6" offset-xl="3">
+            Mobile:
+          </ion-col>
+          <ion-col size-xl="6" offset-xl="3">
+            <b>{{rsvpInfo?.userId?.mobile}}</b>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size-xl="6" offset-xl="3">
+            Email:
+          </ion-col>
+          <ion-col size-xl="6" offset-xl="3">
+            <b>{{rsvpInfo?.userId?.email}}</b>
+          </ion-col>
+        </ion-row>
+      
+      </ion-grid>
+
+    </ion-card>    
+
+  </div>
+
+
+  <ion-grid class="custom-grid-1 poweredBy" [fixed]="true">
+ 
+    <ion-row>
+      <ion-col size="12" size-sm="12" class="custom-spinner">
+        Powered By
+        <a href="https://www.visity.io/" target="_blank">
+          <ion-img src="../assets/visity.png" alt="Visity Logo" class="visity"></ion-img>
+        </a>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>  
+
+</ion-content>

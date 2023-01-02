@@ -1,0 +1,151 @@
+
+
+.container-logo{
+    padding-top: 2em;
+    // display: flex;
+    align-items: center;
+    justify-content: center;
+    // height: 150px;
+    // border: 2px solid #006100;
+    // height: 25%;
+  }
+  
+  .brand{
+    height:5em;
+  }
+  
+  #eventInfo{
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  
+  .container-grid{
+    text-align: center; 
+    // // height: 25px;
+    // padding-left: 2em;
+    // padding-right: 2em;
+    // height: 20%;
+    // border: 1px solid blue;
+  }
+  
+  ion-col{
+    // border:1px solid green;
+  }
+  
+  ion-grid.custom-grid-1{
+    --ion-grid-width: 100%;
+    --ion-grid-width-xs: 100%;
+    --ion-grid-width-sm: 80%;
+    --ion-grid-width-md: 70%;
+    --ion-grid-width-lg: 70%;
+    --ion-grid-width-xl: 50%;
+  }
+  
+  
+  ion-button.custom-btn-yes-outline{
+    --border-color: #47B997;
+    --color: #47B997;
+  }
+  
+  ion-button.custom-btn-yes-solid{
+    --border-color: #47B997; 
+    --background: #47B997;
+    --color: #ffffff;
+  }
+  
+  ion-textarea.custom-textarea {
+    --background: #ececec;
+    --color: rgb(17, 17, 17);
+    --padding-end: 10px;
+    --padding-start: 10px;
+    --placeholder-color: rgb(17, 17, 17);;
+    --placeholder-opacity: 0.5;
+    border-radius: 0.5em;
+  }
+  
+  .custom-spinner{
+    text-align: center;
+    align-items: center;  
+    justify-content: center;  
+  }
+  
+  
+  .check-mark{
+    height: 40%;
+  }
+  
+  .AlreadyScanned{
+    // width: 50%;
+    // align-self: center;
+    height: 12em;
+  }
+  
+  .container-details{
+    text-align: center;
+    height: 20%;
+    // padding-left: 2em;
+    // padding-right: 2em;
+    font-size: 1.5em;
+  
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+  }
+  
+  // .container-footer{
+  //   // padding-top: 1em;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   text-align: center;
+  //   height: 10%;
+  //   background-color: #1B82C7;
+  //   // border: 2px solid #006100;
+  // }
+  
+  
+  
+  #fname{
+    font-size: 2em;
+    font-weight: 200;
+  }
+  
+  #EventName{
+    // font-size: 2em;
+    // font-weight: bold;
+  }
+  
+  #EventDetails{
+    color: #5f5f5f;
+  }
+  
+  #subText{
+    color:rgb(107, 107, 107)
+  }
+  
+  
+  
+  ion-col.label{
+    align-items: left;
+  }
+  
+  #badge1{
+    border-radius: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    // font-weight: bold;
+  }
+  
+  .cardContent{
+    // border: 1px solid;
+  }
+  
+  .poweredBy{
+    margin-top: 3em;
+  }
+  
+  .visity{
+    height: 40%;
+  }

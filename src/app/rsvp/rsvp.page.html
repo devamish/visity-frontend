@@ -1,0 +1,169 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>CSS Playground</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <ion-progress-bar type="indeterminate" *ngIf="ShowLoading"></ion-progress-bar>
+
+  <div class="container-logo" *ngIf="ShowLogo">
+    <div class="centered-element-logo">
+
+        <ion-img [src]="eventInfo?.clientId?.customFields?.logoUrl" alt="Brand Logo" class="brand"></ion-img>
+
+    </div>
+  </div>
+
+  
+  <!-- Show Error -->
+
+  <div class="container-grid error" *ngIf="ShowError">
+
+    <ion-grid class="custom-grid-1" [fixed]="true">
+ 
+      <ion-row>
+        <ion-col size="12" size-sm="12" class="custom-spinner">
+          <ion-img src="../assets/error.jpg" alt="Error" class="check-mark"></ion-img>
+          <p id="fname">Oops, that's not a valid link. Please try again. </p>
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+
+  </div>
+
+
+
+  <!-- Show Success -->
+
+  <div class="container-grid success" *ngIf="ShowSuccess">
+
+    <ion-grid class="custom-grid-1" [fixed]="true">
+
+      <ion-row>
+        <ion-col size="12" size-sm="12" class="custom-spinner">
+          <ion-img src="../assets/check.jpg" alt="Green Tick" class="check-mark"></ion-img>
+          <p id="fname">Awesomeness!! <br>You will receive a confirmation SMS  soon.</p>
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+
+  </div>
+
+
+
+  <!-- Default RSVP - ? -->
+
+  <div class="container-grid" *ngIf="ShowDefaultRSVP">
+
+    <ion-grid class="custom-grid-1" [fixed]="true">
+
+      <ion-row>
+        <ion-col size="12" size-sm="12" class="ion-text-center">
+
+          <!-- <ion-item lines="none"> -->
+            <h1><ion-text color="">{{eventInfo.eventName}}</ion-text></h1>
+            <hr>
+          <!-- </ion-item> -->
+
+          <!-- <ol class="eventInfo ion-text-left">
+            <li>
+              <ion-icon name="calendar-outline"></ion-icon>
+              {{eventInfo.date}}
+            </li>
+            <li>
+              <ion-icon name="time-outline"></ion-icon>
+              {{eventInfo.time}}
+            </li>
+            <li>
+              <ion-icon name="location-outline"></ion-icon>
+              {{eventInfo.venue}}
+            </li>
+          </ol> -->
+
+
+            <ol class="ion-text-left">
+              <li>Please ensure you enter the correct mobile number.</li>
+              <li>Confirmation SMS with link to QR Code will be sent this mobile number.</li>
+              <li>You will have to show the QR Code at venue for contactless access</li>
+            </ol>
+
+
+        </ion-col>
+      </ion-row>
+
+      <form #f="ngForm" class="form" (ngSubmit)="Submit()" padding>
+
+                <ion-row>
+                  <ion-col size="12" size-sm="12">
+          
+                    <ion-item lines="none">
+                      <ion-text color="primary"><b>Registration Form</b></ion-text>
+                    </ion-item>          
+          
+                  </ion-col>
+                </ion-row>
+          
+                <ion-row>
+                  <ion-col size="12" size-sm="12">
+          
+                    <ion-item>
+                      <ion-label position="stacked">Your Name</ion-label>
+                      <ion-input type="text" [(ngModel)]="FormInfo.name" name="name" placeholder="First Name Last Name" required></ion-input>
+                    </ion-item>          
+          
+                  </ion-col>
+                </ion-row>
+          
+                <ion-row>
+                  <ion-col size="12" size-sm="12">
+          
+                    <ion-item>
+                      <ion-label position="stacked">Mobile</ion-label>
+                      <ion-input type="tel" [(ngModel)]="FormInfo.mobile" minlength="10" maxlength="10" name="mobile" placeholder="10 digit mobile no..." required></ion-input>
+                    </ion-item>          
+          
+                  </ion-col>
+                </ion-row>
+          
+                <ion-row>
+                  <ion-col size="12" size-sm="12">
+          
+                    <ion-item>
+                      <ion-label position="stacked">Email</ion-label>
+                      <ion-input type="email" [(ngModel)]="FormInfo.email" name="email" placeholder="Enter here..."></ion-input>
+                    </ion-item>          
+          
+                  </ion-col>
+                </ion-row>
+          
+                <ion-row>
+                  <ion-col size="12" size-sm="12">  
+                    <ion-button [disabled]="!f.valid" type="submit" class="" color="primary" fill="outline" expand="block">Submit</ion-button>
+                  </ion-col>
+                </ion-row>      
+          
+                <ion-row *ngIf="ShowSpinner">
+                  <ion-col size="12" size-sm="12" class="custom-spinner">
+                    <ion-spinner name="lines" color="primary"></ion-spinner>
+                  </ion-col>
+                </ion-row>
+
+      </form>
+
+
+
+    </ion-grid>
+
+    
+  </div>
+
+
+  <!-- <ion-button (click)="ShortenURL('https://app.bitly.com/Bj64cipvOae/bitlinks/3NVRuj8/details')">Test Short URL</ion-button>
+
+  <ion-button (click)="SendSMS()">Send SMS</ion-button> -->
+
+</ion-content>
