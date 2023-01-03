@@ -11,8 +11,8 @@ import { log } from 'console';
 export class HomePage implements OnInit {
   value: any = '';
   param: any = '';
-  url: any = 'http://localhost:8000';
-  // url: any = 'https://api.visity.io';
+  // url: any = 'http://localhost:8000';
+  url: any = 'https://api.visity.io';
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((data) => {
       console.log(data.get('id'));
