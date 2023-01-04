@@ -8,7 +8,7 @@
 
   <ion-progress-bar type="indeterminate" *ngIf="ShowLoading"></ion-progress-bar>
 
-  <div class="container-logo" *ngIf="ShowLogo">
+  <div class="container-logo animate__animated animate__fadeInDown" *ngIf="ShowLogo">
     <div class="centered-element-logo">
 
         <ion-img [src]="eventInfo?.clientId?.customFields?.logoUrl" alt="Brand Logo" class="brand"></ion-img>
@@ -36,14 +36,14 @@
 
 
 
-  <!-- Show Success -->
+  <!-- Show Success --> 
 
-  <div class="container-grid success" *ngIf="ShowSuccess">
+  <div class="container-grid success animate__animated animate__fadeInDown" *ngIf="ShowSuccess">
 
     <ion-grid class="custom-grid-1" [fixed]="true">
 
       <ion-row>
-        <ion-col size="12" size-sm="12" class="custom-spinner">
+        <ion-col size="12" size-sm="12" class="custom-spinner animate__animated animate__fadeInDown animate__delay-1s">
           <ion-img src="../assets/check.jpg" alt="Green Tick" class="check-mark"></ion-img>
           <p id="fname">Awesomeness!! <br>You will receive a confirmation SMS  soon.</p>
         </ion-col>
@@ -62,7 +62,7 @@
     <ion-grid class="custom-grid-1" [fixed]="true">
 
       <ion-row>
-        <ion-col size="12" size-sm="12" class="ion-text-center">
+        <ion-col size="12" size-sm="12" class="ion-text-center animate__animated animate__fadeIn animate__delay-1s">
 
           <!-- <ion-item lines="none"> -->
             <h1><ion-text color="">{{eventInfo.eventName}}</ion-text></h1>
@@ -85,17 +85,17 @@
           </ol> -->
 
 
-            <ol class="ion-text-left">
+            <ol class="ion-text-left animate__animated animate__fadeIn animate__delay-2s">
               <li>Please ensure you enter the correct mobile number.</li>
-              <li>Confirmation SMS with link to QR Code will be sent this mobile number.</li>
-              <li>You will have to show the QR Code at venue for contactless access</li>
+              <li>Confirmation SMS with link to eTicket will be sent this mobile number.</li>
+              <li>You will have to show the eTicket at venue for contactless access</li>
             </ol>
 
 
         </ion-col>
       </ion-row>
 
-      <form #f="ngForm" class="form" (ngSubmit)="Submit()" padding>
+      <form #f="ngForm" class="form animate__animated animate__fadeIn animate__delay-3s" (ngSubmit)="Submit()" padding>
 
                 <ion-row>
                   <ion-col size="12" size-sm="12">

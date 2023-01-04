@@ -12,8 +12,9 @@ import { info } from 'console';
 })
 export class RsvpPage{
 
+  url: any = "https://api.visity.io";
   // url: any = "https://visity-backend.herokuapp.com";
-  url: any = "https://ffqpg5rkag.execute-api.ap-south-1.amazonaws.com/dev";
+  // url: any = "https://ffqpg5rkag.execute-api.ap-south-1.amazonaws.com/dev";
   token: any = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NJZCI6IjYzOWFlZDg5NWMyOTYzMTNmY2I0MDkwNCIsImNsaWVudElkIjoiNjM5YWM3ZjU3ZDRmZWE0MDFiZWFlMzZmIiwicm9sZSI6ImVtcGxveWVlIiwiaWF0IjoxNjcxMTc1MjQzLCJleHAiOjMzMjA3MTc1MjQzfQ.B0t709EWafN0E0AhKQrA0PgaM36pWaIIQpFU251bxng";
 
   config : any = {};
@@ -77,8 +78,7 @@ export class RsvpPage{
     console.log("Get Event Info Function...");
 
     axios.get(
-      this.url+ `/public/event/`+this.eventId, this.config
-      ).then(response => {
+      this.url+ `/public/event/`+this.eventId).then(response => {
         console.log("Get Event Info API Response");
 
         console.log(response)
@@ -119,8 +119,7 @@ export class RsvpPage{
     // Check if user exists by calling the register user API
 
     axios.get(
-      this.url+ `/checkuser/`+this.FormInfo.mobile, this.config
-      ).then(response => {
+      this.url+ `/checkuser/`+this.FormInfo.mobile).then(response => {
         console.log("Check if Mobile Exists API Response");
 
         console.log(JSON.stringify(response));
@@ -172,8 +171,7 @@ export class RsvpPage{
   CreateUser(){
 
     axios.post(
-      this.url+ `/user`, this.FormInfo, this.config
-      ).then(response => {
+      this.url+ `/user`, this.FormInfo).then(response => {
         console.log("Create User API Response");
 
         console.log(JSON.stringify(response));
@@ -214,8 +212,7 @@ export class RsvpPage{
   addRsvp(info: any){
 
     axios.post(
-      this.url+ `/rsvp`, info, this.config
-      ).then(response => {
+      this.url+ `/rsvp`, info).then(response => {
         console.log("Add RSVP API Response");
 
         console.log(JSON.stringify(response));
@@ -243,7 +240,82 @@ export class RsvpPage{
   }
 
 
-  ShortenURL(rsvpId: any){
+  // 1pt.co
+  ShortenURLDEP2(rsvpId: any){
+
+    console.log("Shorten URL"); 
+
+    axios.get("https://csclub.uwaterloo.ca/~phthakka/1pt/addURL.php?url=https://visity.io/qrcode?id="+rsvpId)
+    .then((response)=>{
+
+      console.log("Shorten URL API Response");
+
+      console.log(response);
+
+      let data = response.data;
+
+      this.shortURL = "https://1pt.co/"+data.short;
+      console.log("Short URL is: "+this.shortURL);
+      this.SendSMS();
+
+    }).catch(e => {
+
+      // alert("Oops, SMS !");
+      console.log("Shorten URL Error :"+JSON.stringify(e));
+
+    });
+
+
+  }
+
+
+    // visity.io
+    ShortenURL(rsvpId: any){
+
+      console.log("Shorten URL");
+      console.log("RSVP ID: "+rsvpId);
+  
+      let info = {
+        orgUrl: "https://visity.io/qrcode?id="+rsvpId
+      };
+  
+      console.log("Payload: "+info);
+  
+      axios.post(
+        'https://api.visity.io/public/shortUrl', info
+        ).then(response => {
+          console.log("Short URL API Response");
+  
+          console.log(response);
+          console.log(response.data.shortUrl);
+  
+          this.shortURL = response.data.shortUrl;
+  
+          if(response.data != "Error"){
+            
+            console.log("Shortening Successful");
+            console.log("Trigger Send SMS");
+            this.SendSMS();
+  
+            this.ShowLogo = false;
+            this.ShowDefaultRSVP = false;
+            this.ShowSuccess = true;
+  
+          }      
+  
+        }).catch(e => {
+  
+          alert("Oops, something went wrong!");
+          console.log("Shorten URL API Error :"+JSON.stringify(e));
+  
+        });
+  
+  
+    }
+
+
+  // short.io
+  ShortenURLDEP(rsvpId: any){
 
     console.log("Shorten URL");
     console.log("RSVP ID: "+rsvpId);
@@ -310,6 +382,11 @@ export class RsvpPage{
 
         console.log(response);
         console.log(response.data);
+        this.ShowSpinner = false;
+        this.ShowSuccess = true;
+        this.ShowLogo = false;
+        this.ShowDefaultRSVP = false;
+
 
       }).catch(e => {
 

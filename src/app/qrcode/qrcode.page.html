@@ -7,34 +7,20 @@
 <ion-content>
 
   <ion-progress-bar type="indeterminate" *ngIf="ShowLoading"></ion-progress-bar>
-
-  <!-- <div class="container-logo" *ngIf="ShowLogo">
-    <div class="centered-element-logo">
-        <ion-img [src]="rsvpInfo?.clientId?.customFields?.logoUrl" alt="Brand Logo" class="brand"></ion-img>
-    </div>
-  </div> -->
  
-  <!-- Show Error -->
-
   <div class="container-grid error">
 
     <ion-grid>
 
-      <!-- <ion-col size="8" size-sm="8">
-        <p id="eventName">       
-              {{rsvpInfo?.eventId?.eventName}}
-        </p>
-      </ion-col> -->
-
-      <ion-col size="4" size-sm="4">
+      <ion-col class="animate__animated animate__fadeInDown">
         <ion-img [src]="rsvpInfo?.clientId?.customFields?.logoUrl" alt="Brand Logo" class="brand"></ion-img>
       </ion-col>
 
     </ion-grid>
 
 
-
-    <ion-grid class="custom-grid-1" [fixed]="true" *ngIf="ShowError">
+    <!-- Show Error -->
+    <ion-grid class="custom-grid-1 animate__animated animate__fadeIn" [fixed]="true" *ngIf="ShowError">
  
       <ion-row>
         <ion-col size="12" size-sm="12" class="custom-spinner">
@@ -56,23 +42,77 @@
 
       <ion-row>
         <ion-col size="12" size-sm="12" id="eventInfo">
-          <h1><b>
-            <ion-text color="">
+          <h1 class="animate__animated animate__bounceInLeft animate__delay-1s">
               {{rsvpInfo?.eventId?.eventName}}
-            </ion-text>
-          </b>
           </h1>
-          <!-- <p id="EventDetails">{{rsvpInfo?.eventId?.time}} | {{rsvpInfo?.eventId?.date}}<br>{{rsvpInfo?.eventId?.venue}}</p> -->
-          <!-- <a [href]="rsvpInfo?.eventId?.googleMapURL" target="_blank" *ngIf="rsvpInfo.eventId?.googleMapURL"> -->
-            <!-- <ion-badge color="primary" id="badge1">View Details</ion-badge> -->
-          <!-- </a> -->
+
+        <!-- <ion-card class="eventDetailsCard">
+
+          <ion-grid>
+            
+            <ion-row>
+              <ion-col size-xs="2" class="ion-text-right">
+                <ion-icon name="time-outline"></ion-icon>
+              </ion-col>
+              <ion-col size-xs="10" class="ion-text-left">
+                {{rsvpInfo?.eventId?.time}}
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size-xs="2" class="ion-text-right">
+                <ion-icon name="calendar-outline"></ion-icon>
+              </ion-col>
+              <ion-col size-xs="10" class="ion-text-left">
+                {{rsvpInfo?.eventId?.date}}
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size-xs="2" class="ion-text-right">
+                <ion-icon name="location-outline"></ion-icon>
+              </ion-col>
+              <ion-col size-xs="10" class="ion-text-left">
+                {{rsvpInfo?.eventId?.venue}}
+              </ion-col>
+            </ion-row>
+
+          </ion-grid>
+
+
+        </ion-card> -->
+
+          <div id="EventDetails">
+            <p class="animate__animated animate__bounceInRight animate__delay-1s">
+              {{rsvpInfo?.eventId?.time}} <br>
+              {{rsvpInfo?.eventId?.date}} <br>
+            </p>
+              <ion-badge class="animate__animated animate__fadeIn animate__delay-2s" color="primary" id="badge1" (click)="ToggleEventInfo()">View Details</ion-badge>
+              
+              <p class="animate__animated animate__fadeIn" *ngIf="ShowEventInfo">
+                {{rsvpInfo?.eventId?.venue}} <br>
+                <a [href]="rsvpInfo.eventId.googleMapURL" target="_blank" *ngIf="rsvpInfo.eventId.googleMapURL">
+                  View on Google Maps
+                </a>
+                
+                <br>
+
+                <a [href]="rsvpInfo.eventId.eventDetailsURL" target="_blank" *ngIf="rsvpInfo.eventId.eventDetailsURL">
+                  View Event Page
+                </a>
+
+              </p>
+
+            </div>
+
+        
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row class="animate__animated animate__fadeIn animate__delay-3s">
         <ion-col size="12" size-sm="12">
-          <qr-code [value]="QRCodeValue" [size]="144" foreground="#000000" ></qr-code>
-          <p id="subText">Show QR Code at Venue </p>
+          <qr-code [value]="QRCodeValue" [size]="150" foreground="#000000" ></qr-code>
+          <p id="subText" class="animate__animated animate__fadeInDown animate__delay-3s">Show QR Code at Venue </p>
         </ion-col>
       </ion-row>
 
@@ -86,19 +126,10 @@
 
     </ion-grid>
 
-    <ion-row>
-      <ion-col size="12" size-sm="12" id="eventInfo">
-        <p id="EventDetails">{{rsvpInfo?.eventId?.time}} | {{rsvpInfo?.eventId?.date}}<br>{{rsvpInfo?.eventId?.venue}}</p>
-      </ion-col>
-    </ion-row>
 
     <!-- RSVP Info -->
     
-    <ion-card class="">
-
-      <ion-card-header color="primary">
-        <ion-card-title>Registration Details</ion-card-title>
-      </ion-card-header>
+    <ion-card class="cardContent animate__animated animate__fadeIn animate__delay-4s">
 
       <ion-grid class="custom-grid-1 otherInfo ion-text-left">
         <ion-row>
@@ -119,7 +150,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row *ngIf="rsvpInfo.userId.email">
           <ion-col size-xl="6" offset-xl="3">
             Email:
           </ion-col>
@@ -135,7 +166,7 @@
   </div>
 
 
-  <ion-grid class="custom-grid-1 poweredBy" [fixed]="true">
+  <ion-grid class="custom-grid-1 poweredBy animate__animated animate__fadeInUp animate__delay-5s" [fixed]="true">
  
     <ion-row>
       <ion-col size="12" size-sm="12" class="custom-spinner">

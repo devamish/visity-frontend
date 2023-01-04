@@ -10,8 +10,9 @@ import axios from 'axios';
 })
 export class QrcodePage{
 
+  url: any = "https://api.visity.io";
   // url: any = "https://visity-backend.herokuapp.com";
-  url: any = "https://ffqpg5rkag.execute-api.ap-south-1.amazonaws.com/dev";
+  // url: any = "https://ffqpg5rkag.execute-api.ap-south-1.amazonaws.com/dev";
   token: any = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NJZCI6IjYzOWFlZDg5NWMyOTYzMTNmY2I0MDkwNCIsImNsaWVudElkIjoiNjM5YWM3ZjU3ZDRmZWE0MDFiZWFlMzZmIiwicm9sZSI6ImVtcGxveWVlIiwiaWF0IjoxNjcxMTc1MjQzLCJleHAiOjMzMjA3MTc1MjQzfQ.B0t709EWafN0E0AhKQrA0PgaM36pWaIIQpFU251bxng";
 
   config : any = {};
@@ -22,10 +23,12 @@ export class QrcodePage{
   rsvpInfo: any = {};
 
   ShowLoading: boolean = true; 
-  ShowError: boolean = false;
+  ShowError: boolean = false; 
   ShowLogo: boolean = false;
   ShowDefaultRSVP: boolean = false;
   ShowSuccess: boolean = false;
+  ShowEventInfo: boolean = false;
+
  
   ShowSpinner: boolean = false;
 
@@ -38,7 +41,6 @@ export class QrcodePage{
 
 
   // For QR Code
-  ShowEventInfo: boolean = false;
   ShowQRCode: boolean = false;
   ShowEmpInfo: boolean = false;
 
@@ -121,16 +123,27 @@ export class QrcodePage{
       linkOpened: true
     };
 
-    axios.put(this.url + `/rsvp/`+this.rsvpId, info, this.config).then((res) => {
+    axios.put(this.url + `/rsvp/`+this.rsvpId, info).then((res) => {
       console.log(res)
     }).catch((e) => {
       console.log("error is : " + e)
     })
 
     
-
-
   }
+
+
+  ToggleEventInfo(){
+    console.log("Show Event Info");
+
+    if(this.ShowEventInfo){
+      this.ShowEventInfo = false;
+    }else{
+      this.ShowEventInfo = true;
+    }
+  
+  }
+
 
 }
  

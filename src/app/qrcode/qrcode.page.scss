@@ -74,6 +74,10 @@
     height: 40%;
   }
   
+  .gmaps{
+   height: 2em; 
+  }
+
   .AlreadyScanned{
     // width: 50%;
     // align-self: center;
@@ -116,7 +120,8 @@
   }
   
   #EventDetails{
-    color: #5f5f5f;
+    // color: #5f5f5f;
+    line-height: 1.5em;
   }
   
   #subText{
@@ -135,13 +140,19 @@
     padding-right: 1em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+    text-transform: uppercase;
     // font-weight: bold;
   }
   
   .cardContent{
     // border: 1px solid;
+    --background: none;
   }
   
+  .eventDetailsCard{
+    box-shadow:none !important
+  }
+
   .poweredBy{
     margin-top: 3em;
   }
