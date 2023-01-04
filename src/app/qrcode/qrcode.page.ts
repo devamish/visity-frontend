@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import axios from 'axios';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-qrcode',
@@ -11,7 +12,8 @@ import axios from 'axios';
 export class QrcodePage{
 
   // url: any = "https://visity-backend.herokuapp.com";
-  url: any = "https://ffqpg5rkag.execute-api.ap-south-1.amazonaws.com/dev";
+  url: any = "https://api.visity.io";
+  // url: any = "http://localhost:8000";
   token: any = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NJZCI6IjYzOWFlZDg5NWMyOTYzMTNmY2I0MDkwNCIsImNsaWVudElkIjoiNjM5YWM3ZjU3ZDRmZWE0MDFiZWFlMzZmIiwicm9sZSI6ImVtcGxveWVlIiwiaWF0IjoxNjcxMTc1MjQzLCJleHAiOjMzMjA3MTc1MjQzfQ.B0t709EWafN0E0AhKQrA0PgaM36pWaIIQpFU251bxng";
 
   config : any = {};
@@ -45,7 +47,7 @@ export class QrcodePage{
   ShowCheckMark: boolean = false;
   ShowRedCarpet: boolean = false;
 
-  constructor(private alertController: AlertController, private route: ActivatedRoute, public router: Router) {}
+  constructor(private alertController: AlertController, private route: ActivatedRoute, public router: Router, private socket: Socket) {}
 
   ngOnInit() {
   	console.log("ngOnInit");
@@ -59,6 +61,7 @@ export class QrcodePage{
     this.route.queryParams.subscribe(async params => {
       this.params = params;
       this.rsvpId = this.params.id;
+      this.socketSetup()
       console.log("RSVP ID: "+this.rsvpId);
 
       if(params){
@@ -76,7 +79,16 @@ export class QrcodePage{
 
   
   }
+  socketSetup() {
+    this.socket.connect();
+    this.socket.fromEvent(`${this.rsvpId}`).subscribe(data => {
+      console.log("updated data",data)
+    });
+  }
 
+  ngOnDestroy() {
+    this.socket.disconnect();
+  }
   GetRSVPInfo(){
     console.log("Get RSVP Info Function...");
 

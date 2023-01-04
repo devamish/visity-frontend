@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import axios from 'axios';
 import { info } from 'console';
+import { Socket } from 'ngx-socket-io';
+
 
 @Component({
   selector: 'app-rsvp',
@@ -13,7 +15,7 @@ import { info } from 'console';
 export class RsvpPage{
 
   // url: any = "https://visity-backend.herokuapp.com";
-  url: any = "https://ffqpg5rkag.execute-api.ap-south-1.amazonaws.com/dev";
+  url: any = "https://api.visity.io";
   token: any = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NJZCI6IjYzOWFlZDg5NWMyOTYzMTNmY2I0MDkwNCIsImNsaWVudElkIjoiNjM5YWM3ZjU3ZDRmZWE0MDFiZWFlMzZmIiwicm9sZSI6ImVtcGxveWVlIiwiaWF0IjoxNjcxMTc1MjQzLCJleHAiOjMzMjA3MTc1MjQzfQ.B0t709EWafN0E0AhKQrA0PgaM36pWaIIQpFU251bxng";
 
   config : any = {};
@@ -73,11 +75,12 @@ export class RsvpPage{
 
   }
 
+
   GetEventInfo(){
     console.log("Get Event Info Function...");
 
     axios.get(
-      this.url+ `/public/event/`+this.eventId, this.config
+      this.url+ `/public/event/`+this.eventId
       ).then(response => {
         console.log("Get Event Info API Response");
 

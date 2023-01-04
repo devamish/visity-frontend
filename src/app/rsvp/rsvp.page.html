@@ -10,8 +10,7 @@
 
   <div class="container-logo" *ngIf="ShowLogo">
     <div class="centered-element-logo">
-
-        <ion-img [src]="eventInfo?.clientId?.customFields?.logoUrl" alt="Brand Logo" class="brand"></ion-img>
+        <ion-img [src]="eventInfo?.clientId?.customFields?.logoUrl || 'https://firebasestorage.googleapis.com/v0/b/visityio.appspot.com/o/logos%2Fvisity.png?alt=media&token=b6f96657-cca3-4427-b240-03ac15b76995'" alt="Brand Logo" class="brand"></ion-img>
 
     </div>
   </div>
