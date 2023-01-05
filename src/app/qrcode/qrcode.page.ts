@@ -36,6 +36,7 @@ export class QrcodePage{
   QRCodeValue = "";
 
   UserInfo: any = {};
+  updatedData: any = {};
 
 
 
@@ -81,8 +82,9 @@ export class QrcodePage{
   }
   socketSetup() {
     this.socket.connect();
-    this.socket.fromEvent(`${this.rsvpId}`).subscribe(data => {
+    this.socket.fromEvent(this.rsvpId).subscribe(data => {
       console.log("updated data",data)
+      this.updatedData = data;
     });
   }
 

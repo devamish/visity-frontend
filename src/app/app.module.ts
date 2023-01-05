@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-// const config: SocketIoConfig = { url: 'http://localhost:8000', options: {} };
+// const config: SocketIoConfig = { url: 'http://localhost:8001', options: {
+//   transports: ['websocket']
+// } };
 const config: SocketIoConfig = {
-  url: 'https://api.visity.io',
+  url: 'https://api.visity.io:8001', 
   options: {
-    // transports: ['websocket']
+    transports: ['websocket']
   },
 };
 

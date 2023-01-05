@@ -11,10 +11,10 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
 
-  if (environment.production) {
-    enableProdMode();
+  // if (environment.production) {
+  //   enableProdMode();
   
-    if(window){
-      window.console.log=function(){};
-    }
-  }
+  //   if(window){
+  //     window.console.log=function(){};
+  //   }
+  // }

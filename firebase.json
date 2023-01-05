@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "visityio",
+    "site": "qa-visityio-frontend",
     "public": "www",
     "ignore": [
       "firebase.json",
